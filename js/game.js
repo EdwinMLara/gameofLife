@@ -1,5 +1,4 @@
 var canvas = document.getElementById("canvas");
-console.log(canvas);
 var context = canvas.getContext("2d");
 var canvasWidth = canvas.width;
 var canvasHeight = canvas.height;
@@ -7,8 +6,6 @@ var canvasHeight = canvas.height;
 /**El 10 es el tamaño de la celula */
 var numCellX = canvasWidth/10;
 var numCellY = canvasHeight/10;
-
-console.log(numCellX,numCellY);
 
 var tiles_array = [];
 
@@ -103,19 +100,62 @@ function array2Matriz(array,col){
 }
 
  var matriz_tiles = array2Matriz(tiles_array,numCellX);
- console.log(tiles_array);
- console.log(matriz_tiles);
 
  function gameoflife(){
-     for(var i = 0;i<numCellY;i++){
-         for(var k = 0;k<numCellX;k++){
-             console.log(matriz_tiles[i][k].id);
+     var i1,k1,aux1,aux2,stateCell;
+     var numCell = 0;
+     let neighbours = 0;
+     for(var i = 1;i<numCellY-1;i++){
+         for(var k = 1;k<numCellX-1;k++){
+            i1 = 0;
+            k1 = 0;
+            if(matriz_tiles[i][k] === 'black'){
+                stateCell = 'alive';
+                numCell += 1;
+            }else{
+                stateCell = 'dead';
+            }
+            for (aux1 = i-1;aux1<=i+1;aux1++){
+                for(aux2 = k-1; aux2<=k+1;aux2++){
+                    if(matriz_tiles[aux1][aux2] === 'black'){
+                        neighbours += 1;
+                    }
+                }
+            }
+            
+            if(neighbours){
+                neighbours -= 1;
+            }
+
+            switch(neighbours){
+                case 2:
+                    matriz_tiles[i][k].fillcolor = 'black';
+                    break;
+                case 3:
+                    if(stateCell === 'dead'){
+                        matriz_tiles[i][k].fillcolor = 'black';
+                    }
+                    break;
+                default:
+                    matriz_tiles[i][k] = '#C7FF33';
+
+            }
+            neighbours = 0;
          }
-         console.log('termina');
-     } 
+     }
+     
+     if(numCell){
+        drawTiles();
+     }else{
+        alert('No hay celulas vivas, active algunas');
+     }
  }
 
- gameoflife();
+
+ var iniciar = document.getElementById("iniciar");
+ iniciar.onclick = () =>{
+     gameoflife();
+ }
 
 
 
