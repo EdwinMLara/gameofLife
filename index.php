@@ -7,7 +7,7 @@
 </head>
 <body>
     <div><canvas id="canvas" width="400" height="200" style="border:1px solid #000000;"></canvas></div>
-    <div><button id="iniciar">Iniciar</button><button id="detener">Detener</button></div>
+    <div><button id="iniciar">Iniciar</button><button id="detener">Detener</button><button id="guardar">Guardar Patron</button><button id="cargar">Cargar Patron</button></div>
 </body>
 <script src="js/game.js"></script>
 </html>
