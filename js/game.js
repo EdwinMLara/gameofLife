@@ -150,21 +150,25 @@ function gameoflife(){
         }
     }
     if(numCell){
-    arrayLiveCell.forEach((currentValue) => {
-        tiles_array[currentValue].fillcolor = 'black';
-    })
-    arrayDeadCell.forEach((currentValue) => {
-        tiles_array[currentValue].fillcolor = '#C7FF33'; 
-    })
-    drawTiles();
+        arrayLiveCell.forEach((currentValue) => {
+            tiles_array[currentValue].fillcolor = 'black';
+        })
+        arrayDeadCell.forEach((currentValue) => {
+            tiles_array[currentValue].fillcolor = '#C7FF33'; 
+        })
+        drawTiles();
     }else{
-    alert('No hay celulas vivas, active algunas');
+        clearInterval(interval);
+        alert('No hay celulas vivas, active algunas');
+        
     }
 }
 
 var iniciar = document.getElementById("iniciar");
 var detener = document.getElementById("detener");
+var guardar = document.getElementById("guardar");
 var interval;
+
 iniciar.onclick = () =>{
     interval = setInterval(gameoflife,500);
 }
@@ -172,6 +176,18 @@ iniciar.onclick = () =>{
 detener.onclick = () =>{
     clearInterval(interval);
 }
+
+guardar.onclick = () =>{
+    var jsonStr = JSON.stringify(tiles_array,null, 2);
+    const blob  = new Blob([jsonStr],{type: 'text/plain;charset=utf-8'});
+    var a = document.createElement('a');
+    a.download = 'patron.txt';
+    a.href = window.URL.createObjectURL(blob);
+    a.click();
+    console.log(a);
+}
+
+
 
 
 
