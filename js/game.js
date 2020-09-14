@@ -86,7 +86,14 @@ function checkClick(event){
 canvas.onclick = (e) =>{
     let elementClikedId = checkClick(e);
     //console.log(`se selecciono el cuadro ${elementClikedId}`);
-    tiles_array[elementClikedId].fillcolor = 'black';
+    if(tiles_array[elementClikedId].fillcolor === 'black'){
+        tiles_array[elementClikedId].fillcolor = '#C7FF33';
+        console.log('poner en verde');
+    }
+    else{
+        tiles_array[elementClikedId].fillcolor = 'black';
+        console.log('poner a negro');
+    }
     drawTiles();
 }
 
@@ -167,6 +174,7 @@ function gameoflife(){
 var iniciar = document.getElementById("iniciar");
 var detener = document.getElementById("detener");
 var guardar = document.getElementById("guardar");
+var cargar  = document.getElementById("cargar");
 var interval;
 
 iniciar.onclick = () =>{
@@ -185,6 +193,10 @@ guardar.onclick = () =>{
     a.href = window.URL.createObjectURL(blob);
     a.click();
     console.log(a);
+}
+
+cargar.onchange = (input) => {
+    console.log(input.files);
 }
 
 
