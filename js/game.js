@@ -9,6 +9,12 @@ var numCellY = canvasHeight/10;
 
 var tiles_array = [];
 
+var iniciar = document.getElementById("iniciar");
+var detener = document.getElementById("detener");
+var guardar = document.getElementById("guardar");
+var cargar  = document.getElementById("cargar");
+var interval;
+
 function Tile(x,y,width,height,id,fillcolor){
     this.id = id;
     this.x = x;
@@ -171,12 +177,6 @@ function gameoflife(){
     }
 }
 
-var iniciar = document.getElementById("iniciar");
-var detener = document.getElementById("detener");
-var guardar = document.getElementById("guardar");
-var cargar  = document.getElementById("cargar");
-var interval;
-
 iniciar.onclick = () =>{
     interval = setInterval(gameoflife,500);
 }
@@ -195,8 +195,30 @@ guardar.onclick = () =>{
     console.log(a);
 }
 
-cargar.onchange = (input) => {
-    console.log(input.files);
+cargar.onchange = (e) => {
+    let File = e.target.files[0];
+    let filename = File.name;
+    if(filename.endsWith(".txt")){
+        let reader = new FileReader();
+        reader.readAsText(File);
+
+        reader.onload = function (){
+            let jsonCargado = JSON.parse(reader.result);
+            jsonCargado.forEach((value,index,array) => {
+                if(value.fillcolor == 'black'){
+                    tiles_array[index].fillcolor = 'black';
+                }
+            });
+            drawTiles(); 
+        }
+
+        reader.onerror = function (){
+            console.log(reader.error)
+        }
+    }else{
+        alert('El archivo no es compatibles');
+    } 
+ 
 }
 
 
