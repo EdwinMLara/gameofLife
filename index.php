@@ -10,5 +10,8 @@
     <div><button id="iniciar">Iniciar</button><button id="detener">Detener</button>
     <button id="guardar">Guardar Patron</button><input type="file" id="cargar"/></div>
 </body>
-<script src="js/game.js"></script>
+<script src="js/variables.js"></script>
+<script src="js/pintado.js"></script>
+<script src="js/gameOfLife.js"></script>
+<script src="js/eventos"></script> 
 </html>
