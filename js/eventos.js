@@ -41,3 +41,24 @@ cargar.onchange = (e) => {
     } 
  
 }
+
+/**Cuando ligas una función a un evento en el html 
+ * handleRadios(this) se obtiene el elemento como parametro
+ * handleRadios(event) se obtiene el objeto del evento
+*/
+function handleRadios(myRadio){
+    selected = myRadio.value;
+    switch(selected){
+        case '1':
+            console.log("Game of life");
+            break;
+        case '2':
+            console.log("A*");
+            break;
+        case '3':
+            console.log("Arboles");
+            break;
+        default:
+            console.log("Desconocido");
+    }
+}
