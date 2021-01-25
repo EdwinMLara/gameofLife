@@ -40,8 +40,6 @@ function createTiles(quantityx,quantityy){
     } 
 }
 
-createTiles(numCellX,numCellY);
-
 function drawTiles(){
     tiles_array.forEach((tile,i,arr) =>{
         context.beginPath();
@@ -54,8 +52,6 @@ function drawTiles(){
         context.fill();
     });
 }
-
-drawTiles();
 
 function checkClick(event){
     let clickX = event.layerX;
@@ -93,5 +89,3 @@ function array2Matriz(array,col){
     }
     return res;
 }
-
-matriz_tiles = array2Matriz(tiles_array,numCellX);
