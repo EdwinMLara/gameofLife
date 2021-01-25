@@ -1,4 +1,5 @@
 createTiles(numCellX,numCellY);
+console.log(tiles_array);
 drawTiles(tiles_array);
 matriz_tiles = array2Matriz(tiles_array,numCellX);
 
