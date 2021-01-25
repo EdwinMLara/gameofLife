@@ -1,3 +1,7 @@
+createTiles(numCellX,numCellY);
+drawTiles();
+matriz_tiles = array2Matriz(tiles_array,numCellX);
+
 function gameoflife(){
     var arrayLiveCell = [];
     var arrayDeadCell = [];
