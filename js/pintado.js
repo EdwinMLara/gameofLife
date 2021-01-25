@@ -40,8 +40,8 @@ function createTiles(quantityx,quantityy){
     } 
 }
 
-function drawTiles(){
-    tiles_array.forEach((tile,i,arr) =>{
+function drawTiles(drawArray){
+    drawArray.forEach((tile,i,arr) =>{
         context.beginPath();
         context.fillStyle = tile.fillcolor;
         context.rect(tile.x,tile.y,tile.width,tile.height);

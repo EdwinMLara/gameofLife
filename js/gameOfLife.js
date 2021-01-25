@@ -1,5 +1,5 @@
 createTiles(numCellX,numCellY);
-drawTiles();
+drawTiles(tiles_array);
 matriz_tiles = array2Matriz(tiles_array,numCellX);
 
 function gameoflife(){
@@ -58,7 +58,7 @@ function gameoflife(){
         arrayDeadCell.forEach((currentValue) => {
             tiles_array[currentValue].fillcolor = '#C7FF33'; 
         })
-        drawTiles();
+        drawTiles(tiles_array);
     }else{
         clearInterval(interval);
         alert('No hay celulas vivas, active algunas');
