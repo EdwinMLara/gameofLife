@@ -1,22 +1,37 @@
-var node_start = [];
-var node_goal = []
-function aStart(){
+var openList = [];
+var closeList = [];
+var nodeArray = [];
+var startNode = matriz_tiles[0][0];
+var endNode = matriz_tiles[numCellY-1 ][numCellX-1]; 
+openList.push(startNode)
 
-    for(var i = 1 ; i<numCellY-1 ;i ++){
-        for(var k = 1; k<numCellX-1 ; k++){
-            i1 = 0;
-            k1 = 0;
+function Node(x,y,width,height,fillcolor){
+    Tile.call(x,y,width,height,fillcolor);
+    this.f = 0;
+    this.g = 0;
+    this.h = 0;
+}
 
-            for (aux1 = i-1; aux1 <= i+1; aux1++){
-                for(aux2 = k-1; aux2 <= k+1 ; aux2++){ 
-                    if(matriz_tiles[aux1][aux2].fillcolor === 'black'){
-                        neighbours += 1;
-                    }
-                    k1++;
-                }
-                k1=0;
-                i1++;
-            }
+function createTilesNodes(quantityx,quantityy){
+    let tile_width = canvasWidth/quantityx;
+    let tile_height = canvasHeight/quantityy;
+
+    let quantityAll = quantityy*quantityy;
+
+    let drawPositionNode = {
+        x: 0,
+        y: 0
+    }
+
+    for(let i=0;i<quantityAll;i++){
+        let fillcolor = '#C7FF33';
+        let node = new Node(drawPositionNode.x,drawPositionNode.y,tile_width,tile_height,i,fillcolor);
+        nodeArray.push(node);
+        drawPositionNode.x = drawPositionNode.x + tile_width;
+
+        if(drawPositionNode.x >= canvas.width){
+            drawPositionNode.x = 0;
+            drawPositionNode.y = drawPositionNode.y + tile_height;
         }
     }
 }
