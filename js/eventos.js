@@ -1,5 +1,5 @@
 iniciar.onclick = () =>{
-    interval = setInterval(gameoflife,500);
+    interval = setInterval(aStart,100);
 }
 
 detener.onclick = () =>{

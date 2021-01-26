@@ -7,6 +7,7 @@ var canvasHeight = canvas.height;
 var numCellX = canvasWidth/10;
 var numCellY = canvasHeight/10;
 
+console.log(numCellY,numCellX);
 var tiles_array = [];
 
 var iniciar = document.getElementById("iniciar");

@@ -18,5 +18,6 @@
 <script src="js/variables.js"></script>
 <script src="js/pintado.js"></script>
 <script src="js/gameOfLife.js"></script>
+<script src="js/aStart.js"></script>
 <script src="js/eventos.js"></script> 
 </html>

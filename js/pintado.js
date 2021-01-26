@@ -17,19 +17,19 @@ function Tile(x,y,width,height,id,fillcolor){
 }
 
 function createTiles(quantityx,quantityy){
-    var tile_width = canvasWidth/quantityx;
-    var tile_height = canvasHeight/quantityy;
+    let tile_width = canvasWidth/quantityx;
+    let tile_height = canvasHeight/quantityy;
 
-    var quantityAll = quantityx * quantityy;
+    let quantityAll = quantityx * quantityy;
 
-    var drawPosition = {
+    let drawPosition = {
         x: 0,
         y:0
     }
 
     for(var i=0;i<quantityAll;i++){
-        var fillcolor = '#C7FF33';
-        var tile = new Tile(drawPosition.x,drawPosition.y,tile_width,tile_height,i,fillcolor);
+        let fillcolor = '#C7FF33';
+        let tile = new Tile(drawPosition.x,drawPosition.y,tile_width,tile_height,i,fillcolor);
         tiles_array.push(tile);
         drawPosition.x = drawPosition.x + tile_width;
 
@@ -40,8 +40,8 @@ function createTiles(quantityx,quantityy){
     } 
 }
 
-function drawTiles(drawArray){
-    drawArray.forEach((tile,i,arr) =>{
+function drawTiles(){
+    tiles_array.forEach((tile,i,arr) =>{
         context.beginPath();
         context.fillStyle = tile.fillcolor;
         context.rect(tile.x,tile.y,tile.width,tile.height);
