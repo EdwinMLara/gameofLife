@@ -163,19 +163,23 @@ function aStart(){
 
             if(!closeList.includes(neighbor) && !neighbor.wall){
                 var tempG = current.g + 1;
-
+                var newPath = false;
                 if(openList.includes(neighbor)){
                     if(tempG < neighbor.g){
                         neighbor.g = tempG;
+                        newPath = true;
                     }
                 }else{
-                    neighbor.g = tempG;
+                    neighbor.g = tempG; 
+                    newPath = true;
                     openList.push(neighbor);
                 }
 
-                neighbor.h = heuristic(neighbor,endNode);
-                neighbor.f = neighbor.g + neighbor.h;
-                neighbor.previous = current;
+                if(newPath){
+                    neighbor.h = heuristic(neighbor,endNode);
+                    neighbor.f = neighbor.g + neighbor.h;
+                    neighbor.previous = current;
+                }   
             }
         } 
     }else{
