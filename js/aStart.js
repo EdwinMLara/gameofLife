@@ -24,12 +24,28 @@ function Node(x,y,width,height,id,fillcolor){
         if(y>0){
             this.neighbors.push(arrayAsMatrix[y-1][x]);
         }
+
+        if(x > 0 && y > 0){
+            this.neighbors.push(arrayAsMatrix[y-1][x-1]);
+        }
+
+        if(x < numCellX-1 && y > 0){
+            this.neighbors.push(arrayAsMatrix[y-1][x+1]);
+        }
+
+        if(x > 0 && y < numCellY - 1){
+            this.neighbors.push(arrayAsMatrix[y+1][x-1]);
+        }
+        
+        if(x < numCellX -1 && y < numCellY -1){
+            this.neighbors.push(arrayAsMatrix[y+1][x+1]);
+        }
     }
 
     this.previous = undefined;
     this.wall = false;
 
-    if(Math.random(1) < 0.1){
+    if(Math.random(1) < 0.3){
         this.wall = true;
     }
 
@@ -176,6 +192,6 @@ function aStart(){
     });
 
     drawTilesNodes();
-    console.log("open",openList);
-    console.log("close",closeList);
+    //console.log("open",openList);
+    //console.log("close",closeList);
 }
