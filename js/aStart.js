@@ -106,8 +106,10 @@ var openList = [];
 var closeList = [];
 var startNode = matrixNodes[0][0];
 startNode.fillcolor = '#8E44AD';
+startNode.wall = false;
 var endNode = matrixNodes[numCellY-1][numCellX-5];
 endNode.fillcolor = '#8E44AD';
+endNode.wall = false;
 openList.push(startNode);
 console.log(startNode,endNode);
 
