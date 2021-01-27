@@ -27,6 +27,15 @@ function Node(x,y,width,height,id,fillcolor){
     }
 
     this.previous = undefined;
+    this.wall = false;
+
+    if(Math.random(1) < 0.1){
+        this.wall = true;
+    }
+
+    if(this.wall){
+        this.fillcolor = '#000000';
+    }
 }
 
 function createTilesNodes(quantityx,quantityy){
@@ -96,9 +105,9 @@ function heuristic(a,b){
 var openList = [];
 var closeList = [];
 var startNode = matrixNodes[0][0];
-startNode.fillcolor = '#000000';
+startNode.fillcolor = '#8E44AD';
 var endNode = matrixNodes[numCellY-1][numCellX-5];
-endNode.fillcolor = '#000000';
+endNode.fillcolor = '#8E44AD';
 openList.push(startNode);
 console.log(startNode,endNode);
 
@@ -134,7 +143,7 @@ function aStart(){
         for (let i=0;i<neighbors.length;i++){
             var neighbor = neighbors[i];
 
-            if(!closeList.includes(neighbor)){
+            if(!closeList.includes(neighbor) && !neighbor.wall){
                 var tempG = current.g + 1;
 
                 if(openList.includes(neighbor)){
@@ -168,5 +177,3 @@ function aStart(){
     console.log("open",openList);
     console.log("close",closeList);
 }
-
-//aStart();
